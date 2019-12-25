@@ -62,11 +62,10 @@ public class RepoService {
                 itemView.setPrice(resultSet.getInt("price"));
                 itemView.setPic_url(resultSet.getString("pic_url"));
                 itemView.setNum(resultSet.getInt("num"));
-                itemView.setSum_price(resultSet.getInt("sum_price"));
+                itemView.setRepo_id(resultSet.getInt("repo_id"));
                 return itemView;
             });
         }catch (Exception e){
-            System.out.println(e.toString());
             return null;
         }
 
