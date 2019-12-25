@@ -74,5 +74,26 @@ SELECT * FROM contract_view
 WHERE act_num<contract_num;
 
 CREATE VIEW item_view AS
-SELECT *,SUM(price) FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
+SELECT *,SUM(price) as sum_price FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
 GROUP BY repo_id;
+
+DELIMITER $$
+
+CREATE PROCEDURE Add_item(
+  IN pItem_id INT,
+  IN pRepo_id INT,
+  IN pCon_id INT,
+  IN pNum INT,
+  IN pProcesser INT
+)
+BEGIN
+  INSERT INTO item_log VALUES (null,SYSDATE(),pRepo_id,pItem_id,pNum,pCon_id,pProcesser);
+  IF (SELECT COUNT(*) FROM item_rec WHERE item_id=pItem_id AND repo_id=pRepo_id )>0 THEN
+    UPDATE item_rec SET num=num+pNum WHERE item_id=pItem_id AND repo_id=pRepo_id;
+  ELSE
+    INSERT INTO item_rec VALUES (null,pItem_id,pNum,pRepo_id);
+  END IF;
+  UPDATE contract SET act_num=act_num+pNum WHERE contract_id=pCon_id;
+END
+$$
+DELIMITER ;
