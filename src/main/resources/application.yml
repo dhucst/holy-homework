@@ -16,8 +16,8 @@ devtools:
   restart:
     enabled: true
 jackson:
-  date-format: yyyy-MM-dd
-time-zone: GMT+8
+  date-format: yyyy-MM-dd  #日期格式设置
+  time-zone: GMT+8   #时区设置
 
 server:
   tomcat:
