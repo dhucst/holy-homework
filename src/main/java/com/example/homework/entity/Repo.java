@@ -1,6 +1,5 @@
 package com.example.homework.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
