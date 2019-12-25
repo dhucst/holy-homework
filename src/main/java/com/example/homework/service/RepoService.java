@@ -22,4 +22,13 @@ public class RepoService {
         return true;
     }
 
+    public boolean update(Repo repo, int id) {
+        String sql = "UPDATE  repo SET repo_name=? WHERE repo_id=?";
+        try {
+            jdbcTemplate.update(sql, repo.getRepo_name(), id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 }
