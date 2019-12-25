@@ -74,5 +74,5 @@ SELECT * FROM contract_view
 WHERE act_num<contract_num;
 
 CREATE VIEW item_view AS
-SELECT *,SUM(price) FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
+SELECT *,SUM(price) as sum_price FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
 GROUP BY repo_id;
