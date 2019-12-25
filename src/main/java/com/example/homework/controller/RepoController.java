@@ -17,8 +17,6 @@ import javax.annotation.Resource;
 public class RepoController {
 
     @Resource
-    private JdbcTemplate jdbcTemplate;
-
     private RepoService repoService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST, produces = "application/json")

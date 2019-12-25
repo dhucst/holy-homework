@@ -1,10 +1,8 @@
 package com.example.homework.service;
 
 import com.example.homework.entity.Repo;
-import com.example.homework.entity.ResEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 
