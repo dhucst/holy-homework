@@ -3,6 +3,7 @@ package com.example.homework.controller;
 import com.example.homework.entity.Contract_view;
 import com.example.homework.entity.Contract;
 import com.example.homework.entity.ResEntity;
+import com.example.homework.entity.Todo_contract;
 import com.example.homework.service.ConService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,14 @@ public class ConController {
     }
 
     //查看未完成的合同信息
-
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_todo_con(@PathVariable("id") int id) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Todo_contract> result = conService.getContractTodo();
+        if (result.size() <= 0)
+            return new ResEntity(404,"Not found");
+        res.setData(result);
+        return res;
+    }
 }

@@ -2,8 +2,7 @@ package com.example.homework.entity;
 
 import java.util.Date;
 
-public class Contract_view {
-
+public class Todo_contract {
     //item
     private int item_id;
     private String item_name;
@@ -134,5 +133,4 @@ public class Contract_view {
     public void setAct_num(int act_num) {
         this.act_num = act_num;
     }
-
 }
