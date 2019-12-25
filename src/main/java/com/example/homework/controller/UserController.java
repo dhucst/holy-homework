@@ -1,23 +1,37 @@
 package com.example.homework.controller;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.example.homework.entity.Employee;
+import com.example.homework.entity.Repo;
+import com.example.homework.entity.ResEntity;
+import com.example.homework.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-    private JdbcTemplate jdbcTemplate;
-/*
-    @RequestMapping(value = "/login", method = POST, produces = "application/json")
-    public WebResponse<Map<String, Object>> login(@RequestBody Article article){
+    @Autowired     //实现接口自动化
+    private UserService userService;
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity new_user(@PathVariable("username") String username){
+        ResEntity res = new ResEntity(200, "success");
+        List<Employee> result = userService.getUsername(username);
+        if(result.size()!=0)
+        {
+            Employee user1 = result.get(0);
+            if(user1.getPwd().equals())
+
+            }
+        }
+        return res;
     }
-    */
+
 }

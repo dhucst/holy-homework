@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("/con")
 public class ConController {
+
     @Resource
     private ConService conService;
 

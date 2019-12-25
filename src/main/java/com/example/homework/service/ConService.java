@@ -14,6 +14,7 @@ import java.util.List;
 
 @Service
 public class ConService {
+
     @Resource
     private JdbcTemplate jdbcTemplate;
 
