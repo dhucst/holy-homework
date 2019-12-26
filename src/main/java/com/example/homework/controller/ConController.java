@@ -51,4 +51,30 @@ public class ConController {
         res.setData(result);
         return res;
     }
+
+    //查看所有合同(分页)
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_all_contract(@RequestParam int pageIndex, @RequestParam int pageSize) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Contract> result = conService.getAllContracts(pageIndex, pageSize);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
+        res.setData(result);
+        return res;
+    }
+
+    //合同总数
+    @RequestMapping(value = "/num", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_num() {
+        ResEntity res = new ResEntity(200, "success");
+        int result = conService.getContractNum();
+        res.setData(result);
+        return res;
+    }
+
+
+
+
 }

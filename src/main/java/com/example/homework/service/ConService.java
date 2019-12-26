@@ -1,6 +1,7 @@
 package com.example.homework.service;
 
 import com.example.homework.entity.Contract;
+import com.example.homework.entity.Item;
 import com.example.homework.entity.Todo_contract;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -78,6 +79,37 @@ public class ConService {
         }
     }
 
+    //查看所有合同(分页)
+    public List<Contract> getAllContracts(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM contract LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
+        try {
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Contract contract = new Contract();
+                contract.setContract_id(resultSet.getInt("contract_id"));
+                contract.setProvider_id(resultSet.getInt("provider_id"));
+                contract.setItem_id(resultSet.getInt("item_id"));
+                contract.setContract_num(resultSet.getInt("contract_num"));
+                contract.setPrice(resultSet.getInt("price"));
+                contract.setContract_date(resultSet.getDate("contract_date"));
+                contract.setProcesser(resultSet.getInt("processer"));
+                contract.setAct_num(resultSet.getInt("act_num"));
+
+                return contract;
+            });
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public int getContractNum() {
+        String sql = "SELECT COUNT(*) AS num FROM contract";
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 
 }
 
