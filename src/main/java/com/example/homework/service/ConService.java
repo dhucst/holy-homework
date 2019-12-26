@@ -1,8 +1,7 @@
 package com.example.homework.service;
 
-import com.example.homework.entity.Todo_contract;
-import com.example.homework.entity.Contract_view;
 import com.example.homework.entity.Contract;
+import com.example.homework.entity.Todo_contract;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -67,22 +66,17 @@ public class ConService {
     public List<Todo_contract> getContractTodo(){
         String sql = "SELECT * FROM todo_contract";
         try {
-            return jdbcTemplate.query(sql, new RowMapper<Todo_contract>() {
-                @Override
-                public Todo_contract mapRow(ResultSet resultSet, int i) throws SQLException {
-                    Todo_contract todoContract = new Todo_contract();
-
-                    todoContract.setContract_id(resultSet.getInt("contract_id"));
-                    todoContract.setProvider_id(resultSet.getInt("provider_id"));
-                    todoContract.setItem_id(resultSet.getInt("item_id"));
-                    todoContract.setContract_num(resultSet.getInt("contract_num"));
-                    todoContract.setPrice(resultSet.getInt("price"));
-                    todoContract.setContract_date(resultSet.getDate("contract_date"));
-                    todoContract.setProcesser(resultSet.getInt("processer"));
-                    todoContract.setAct_num(resultSet.getInt("act_num"));
-
-                    return todoContract;
-                }
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Todo_contract todoContract = new Todo_contract();
+                todoContract.setContract_id(resultSet.getInt("contract_id"));
+                todoContract.setProvider_id(resultSet.getInt("provider_id"));
+                todoContract.setItem_id(resultSet.getInt("item_id"));
+                todoContract.setContract_num(resultSet.getInt("contract_num"));
+                todoContract.setPrice(resultSet.getInt("price"));
+                todoContract.setContract_date(resultSet.getDate("contract_date"));
+                todoContract.setProcesser(resultSet.getInt("processer"));
+                todoContract.setAct_num(resultSet.getInt("act_num"));
+                return todoContract;
             });
         }catch (Exception e){
             System.out.println(e);

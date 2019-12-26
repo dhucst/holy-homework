@@ -1,7 +1,5 @@
 package com.example.homework.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 public class Repo {
     private int repo_id;

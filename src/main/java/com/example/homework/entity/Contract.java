@@ -1,22 +1,17 @@
 package com.example.homework.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //创建实体对象
 public class Contract {
-    private int contract_id;
-    private int provider_id;
-    private int item_id;
-    private int contract_num;
-    private int price;
-    private Date contract_date;
-    private int act_num;
-
-    public int getcontract_id() {
+    public int getContract_id() {
         return contract_id;
     }
 
-    public void setcontract_id(int contract_id) {
+    public void setContract_id(int contract_id) {
         this.contract_id = contract_id;
     }
 
@@ -36,11 +31,11 @@ public class Contract {
         this.item_id = item_id;
     }
 
-    public int getcontract_num() {
+    public int getContract_num() {
         return contract_num;
     }
 
-    public void setcontract_num(int contract_num) {
+    public void setContract_num(int contract_num) {
         this.contract_num = contract_num;
     }
 
@@ -52,11 +47,11 @@ public class Contract {
         this.price = price;
     }
 
-    public Date getcontract_date() {
+    public Date getContract_date() {
         return contract_date;
     }
 
-    public void setcontract_date(Date contract_date) {
+    public void setContract_date(Date contract_date) {
         this.contract_date = contract_date;
     }
 
@@ -67,4 +62,26 @@ public class Contract {
     public void setAct_num(int act_num) {
         this.act_num = act_num;
     }
+
+    private int contract_id;
+    private int provider_id;
+    private int item_id;
+    private int contract_num;
+    private int price;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date contract_date;
+    private int act_num;
+
+    public int getProcesser() {
+        return processer;
+    }
+
+    public void setProcesser(int processer) {
+        this.processer = processer;
+    }
+
+    private int processer;
+
 }

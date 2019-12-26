@@ -1,5 +1,8 @@
 package com.example.homework.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Contract_view {
@@ -20,6 +23,9 @@ public class Contract_view {
     private int contract_id;
     private int provider_id;
     private int contract_num;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date contract_date;
     private int processer;
     private int act_num;

@@ -1,7 +1,5 @@
 package com.example.homework.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
 import java.util.Date;
 
 //创建实体对象

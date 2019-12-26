@@ -1,6 +1,5 @@
 package com.example.homework.controller;
 
-import com.example.homework.entity.Contract_view;
 import com.example.homework.entity.Contract;
 import com.example.homework.entity.ResEntity;
 import com.example.homework.entity.Todo_contract;
