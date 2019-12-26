@@ -3,12 +3,9 @@ package com.example.homework.service;
 import com.example.homework.entity.Contract;
 import com.example.homework.entity.Todo_contract;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
