@@ -64,6 +64,7 @@ public class RepoService {
                 itemView.setPic_url(resultSet.getString("pic_url"));
                 itemView.setNum(resultSet.getInt("num"));
                 itemView.setRepo_id(resultSet.getInt("repo_id"));
+                itemView.setItem_id(resultSet.getInt("item_id"));
                 return itemView;
             });
         } catch (Exception e) {

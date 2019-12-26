@@ -1,6 +1,7 @@
 package com.example.homework.controller;
 
 import com.example.homework.entity.Item;
+import com.example.homework.entity.Item_view;
 import com.example.homework.entity.ResEntity;
 import com.example.homework.service.ItemService;
 import org.springframework.stereotype.Controller;
@@ -62,6 +63,17 @@ public class ItemController {
     ResEntity get_num() {
         ResEntity res = new ResEntity(200, "success");
         int result = itemService.getItemNum();
+        res.setData(result);
+        return res;
+    }
+
+    @RequestMapping(value = "/rec", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_all_item_rec(@RequestParam int pageIndex, @RequestParam int pageSize) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Item_view> result = itemService.getAllItemRec(pageIndex, pageSize);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
         res.setData(result);
         return res;
     }

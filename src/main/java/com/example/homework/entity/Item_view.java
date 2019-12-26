@@ -8,6 +8,16 @@ public class Item_view {
     private int num;
     private int repo_id;
 
+    public int getItem_id() {
+        return item_id;
+    }
+
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
+    }
+
+    private int item_id;
+
 
 
     public String getItem_name() {

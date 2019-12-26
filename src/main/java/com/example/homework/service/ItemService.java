@@ -1,6 +1,7 @@
 package com.example.homework.service;
 
 import com.example.homework.entity.Item;
+import com.example.homework.entity.Item_view;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +75,25 @@ public class ItemService {
             return jdbcTemplate.queryForObject(sql, Integer.class);
         } catch (Exception e) {
             return 0;
+        }
+    }
+
+    public List<Item_view> getAllItemRec(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM item_view LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
+        try {
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Item_view itemView = new Item_view();
+                itemView.setItem_name(resultSet.getString("item_name"));
+                itemView.setUnit(resultSet.getString("unit"));
+                itemView.setPrice(resultSet.getInt("price"));
+                itemView.setPic_url(resultSet.getString("pic_url"));
+                itemView.setNum(resultSet.getInt("num"));
+                itemView.setRepo_id(resultSet.getInt("repo_id"));
+                itemView.setItem_id(resultSet.getInt("item_id"));
+                return itemView;
+            });
+        } catch (Exception e) {
+            return null;
         }
     }
 
