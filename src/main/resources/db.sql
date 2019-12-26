@@ -73,9 +73,12 @@ CREATE VIEW todo_contract AS
 SELECT * FROM contract_view
 WHERE act_num<contract_num;
 
+CREATE VIEW finished_contract AS
+SELECT * FROM contract_view
+WHERE act_num>=contract_num;
+
 CREATE VIEW item_view AS
-SELECT *,SUM(price) as sum_price FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t
-GROUP BY repo_id;
+SELECT item_id,item_name,unit,price,pic_url,num,repo_id FROM (SELECT * FROM item i NATURAL LEFT JOIN item_rec rec) AS t;
 
 DELIMITER $$
 
