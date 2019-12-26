@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import javax.annotation.Resource;
-
+/*
 @Service
 public class UserService {
 
-    @Resource
+   /* @Resource
     private JdbcTemplate jdbcTemplate;
 
     public List<Employee> getUsername(String username){
@@ -23,3 +23,4 @@ public class UserService {
 
 
 }
+*/

@@ -28,7 +28,8 @@ public class ConService {
 
             jdbcTemplate.update(sql,contract.getProvider_id(),contract.getItem_id(),contract.getContract_num(),contract.getPrice(),contract.getContract_date(),contract.getProcesser(),contract.getAct_num());
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
+            System.out.println(contract.getContract_id());
             return false;
         }
         return true;
@@ -43,6 +44,7 @@ public class ConService {
                 public Contract mapRow(ResultSet resultSet, int i) throws SQLException {
                     Contract contract = new Contract();
 
+                    contract.setContract_id(resultSet.getInt("contract_id"));
                     contract.setProvider_id(resultSet.getInt("provider_id"));
                     contract.setItem_id(resultSet.getInt("item_id"));
                     contract.setContract_num(resultSet.getInt("contract_num"));
