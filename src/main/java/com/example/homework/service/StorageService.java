@@ -17,7 +17,6 @@ public class StorageService {
 
     public boolean create(Item_Log item_log) {
 
-        //String sql = String.format("call Add_Item(pItem_id=?,pRepo_id=?,pCon_id=?,pNum=?,pProcesser=?)",);
         String sql = String.format("call Add_Item(%d,%d,%d,%d,%d)",item_log.getItem_id(),item_log.getRepo_id(),item_log.getContract_id(),item_log.getNum(),item_log.getProcesser());
         try {
             jdbcTemplate.execute(sql);
@@ -37,6 +36,8 @@ public class StorageService {
                 public Item_Log mapRow(ResultSet resultSet, int i) throws SQLException {
                     Item_Log item_log = new Item_Log();
                     item_log.setItem_id(resultSet.getInt("item_id"));
+                    item_log.setLog_id(resultSet.getInt("log_id"));
+                    item_log.setIn_date(resultSet.getDate("in_date"));
                     item_log.setRepo_id(resultSet.getInt("repo_id"));
                     item_log.setNum(resultSet.getInt("num"));
                     item_log.setContract_id(resultSet.getInt("contract_id"));
