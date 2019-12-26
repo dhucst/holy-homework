@@ -1,22 +1,14 @@
 package com.example.homework.entity;
 
 public class Item_view {
-    private int item_id;
     private String item_name;
     private String unit;
     private int price;
     private String pic_url;
-    private int item_rec_id;
     private int num;
     private int repo_id;
 
-    public int getItem_id() {
-        return item_id;
-    }
 
-    public void setItem_id(int item_id) {
-        this.item_id = item_id;
-    }
 
     public String getItem_name() {
         return item_name;
@@ -50,13 +42,6 @@ public class Item_view {
         this.pic_url = pic_url;
     }
 
-    public int getItem_rec_id() {
-        return item_rec_id;
-    }
-
-    public void setItem_rec_id(int item_rec_id) {
-        this.item_rec_id = item_rec_id;
-    }
 
     public int getNum() {
         return num;
@@ -73,14 +58,4 @@ public class Item_view {
     public void setRepo_id(int repo_id) {
         this.repo_id = repo_id;
     }
-
-    public int getSum_price() {
-        return sum_price;
-    }
-
-    public void setSum_price(int sum_price) {
-        this.sum_price = sum_price;
-    }
-
-    private int sum_price;
 }
