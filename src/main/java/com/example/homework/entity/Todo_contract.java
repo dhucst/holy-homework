@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class Todo_contract {
+
     private int contract_id;
     private int provider_id;
     private int item_id;
@@ -27,7 +28,6 @@ public class Todo_contract {
         this.item_id = item_id;
     }
 
-
     public int getPrice() {
         return price;
     }
@@ -35,7 +35,6 @@ public class Todo_contract {
     public void setPrice(int price) {
         this.price = price;
     }
-
 
     public int getContract_id() { return contract_id; }
 

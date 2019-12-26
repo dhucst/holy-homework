@@ -27,6 +27,7 @@ public class Contract_view {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date contract_date;
+
     private int processer;
     private int act_num;
 
