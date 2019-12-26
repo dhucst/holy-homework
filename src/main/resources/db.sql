@@ -67,7 +67,9 @@ UNIQUE (item_id,repo_id)
 );
 
 CREATE VIEW contract_view AS
-SELECT * FROM (item i NATURAL LEFT JOIN contract c),employee WHERE processer=emp_id;
+SELECT contract_id,provider_id,item_id,contract_num,price,contract_date,processer,act_num
+FROM (item i NATURAL right JOIN contract c),employee
+WHERE processer=emp_id;
 
 CREATE VIEW todo_contract AS
 SELECT * FROM contract_view

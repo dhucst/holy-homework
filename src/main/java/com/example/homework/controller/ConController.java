@@ -44,7 +44,7 @@ public class ConController {
     //查看未完成的合同信息
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    ResEntity get_todo_con(@PathVariable("id") int id) {
+    ResEntity get_todo_con() {
         ResEntity res = new ResEntity(200, "success");
         List<Todo_contract> result = conService.getContractTodo();
         if (result.size() <= 0)

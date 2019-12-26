@@ -1,6 +1,7 @@
 package com.example.homework.service;
 
 import com.example.homework.entity.Todo_contract;
+import com.example.homework.entity.Contract_view;
 import com.example.homework.entity.Contract;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -57,7 +58,7 @@ public class ConService {
                 }
             });
         }catch (Exception e){
-            System.out.println(e.toString());
+            System.out.println(e);
             return null;
         }
     }
@@ -71,6 +72,7 @@ public class ConService {
                 public Todo_contract mapRow(ResultSet resultSet, int i) throws SQLException {
                     Todo_contract todoContract = new Todo_contract();
 
+                    todoContract.setContract_id(resultSet.getInt("contract_id"));
                     todoContract.setProvider_id(resultSet.getInt("provider_id"));
                     todoContract.setItem_id(resultSet.getInt("item_id"));
                     todoContract.setContract_num(resultSet.getInt("contract_num"));
@@ -83,7 +85,7 @@ public class ConService {
                 }
             });
         }catch (Exception e){
-            System.out.println(e.toString());
+            System.out.println(e);
             return null;
         }
     }
