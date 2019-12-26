@@ -16,7 +16,7 @@ public class RepoService {
 
     @Resource
     private JdbcTemplate jdbcTemplate;
-
+    //增
     public boolean create(Repo repo) {
         String sql = "INSERT INTO repo VALUES(null,?,?)";
         try {
@@ -26,7 +26,7 @@ public class RepoService {
         }
         return true;
     }
-
+    //改
     public boolean update(Repo repo, int id) {
         String sql = "UPDATE  repo SET repo_name=? WHERE repo_id=?";
         try {
@@ -36,7 +36,7 @@ public class RepoService {
         }
         return true;
     }
-
+    //查
     public List<Repo> findRepoById(int id){
         String sql = "SELECT * FROM repo WHERE repo_id=" + id;
         try {
@@ -54,7 +54,7 @@ public class RepoService {
             return null;
         }
     }
-
+    //视图
     public List<Item_view> getRepoItem(int id){
         String sql = "SELECT * FROM item_view WHERE repo_id=" + id;
         try {
