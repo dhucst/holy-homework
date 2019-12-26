@@ -62,9 +62,9 @@ public class RepoController {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    ResEntity get_all_repo() {
+    ResEntity get_all_item(@RequestParam int pageIndex, @RequestParam int pageSize) {
         ResEntity res = new ResEntity(200, "success");
-        List<Repo> result = repoService.getAllRepos();
+        List<Repo> result = repoService.getAllRepos(pageIndex, pageSize);
         if (result.size() <= 0)
             return new ResEntity(404, "Not found");
         res.setData(result);

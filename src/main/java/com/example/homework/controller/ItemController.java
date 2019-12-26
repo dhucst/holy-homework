@@ -34,4 +34,27 @@ public class ItemController {
             return new ResEntity(500, "failed");
         return new ResEntity(200, "success");
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_item(@PathVariable("id") int id) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Item> result = itemService.findItemById(id);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
+        res.setData(result);
+        return res;
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_all_item(@RequestParam int pageIndex, @RequestParam int pageSize) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Item> result = itemService.getAllItems(pageIndex, pageSize);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
+        res.setData(result);
+        return res;
+    }
+
 }

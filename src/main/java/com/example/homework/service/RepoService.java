@@ -16,6 +16,7 @@ public class RepoService {
 
     @Resource
     private JdbcTemplate jdbcTemplate;
+
     //增
     public boolean create(Repo repo) {
         String sql = "INSERT INTO repo VALUES(null,?,?)";
@@ -26,6 +27,7 @@ public class RepoService {
         }
         return true;
     }
+
     //改
     public boolean update(Repo repo, int id) {
         String sql = "UPDATE  repo SET repo_name=? WHERE repo_id=?";
@@ -36,8 +38,9 @@ public class RepoService {
         }
         return true;
     }
+
     //查
-    public List<Repo> findRepoById(int id){
+    public List<Repo> findRepoById(int id) {
         String sql = "SELECT * FROM repo WHERE repo_id=" + id;
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
@@ -47,12 +50,13 @@ public class RepoService {
                 repo.setRepo_id(resultSet.getInt("repo_id"));
                 return repo;
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
+
     //视图
-    public List<Item_view> getRepoItem(int id){
+    public List<Item_view> getRepoItem(int id) {
         String sql = "SELECT * FROM item_view WHERE repo_id=" + id;
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
@@ -65,14 +69,14 @@ public class RepoService {
                 itemView.setRepo_id(resultSet.getInt("repo_id"));
                 return itemView;
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
 
     }
 
-    public List<Repo> getAllRepos(){
-        String sql = "SELECT * FROM repo";
+    public List<Repo> getAllRepos(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM repo LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
                 Repo repo = new Repo();
@@ -81,7 +85,7 @@ public class RepoService {
                 repo.setRepo_id(resultSet.getInt("repo_id"));
                 return repo;
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

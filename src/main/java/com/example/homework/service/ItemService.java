@@ -3,6 +3,7 @@ package com.example.homework.service;
 import com.example.homework.entity.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -33,7 +34,7 @@ public class ItemService {
         return true;
     }
 
-    public List<Item> findItemById(int id){
+    public List<Item> findItemById(int id) {
         String sql = "SELECT * FROM item WHERE item_id=" + id;
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
@@ -45,13 +46,13 @@ public class ItemService {
                 item.setPrice(resultSet.getInt("price"));
                 return item;
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
-    public List<Item> getAllItems(){
-        String sql = "SELECT * FROM item";
+    public List<Item> getAllItems(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM item LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
                 Item item = new Item();
@@ -62,7 +63,7 @@ public class ItemService {
                 item.setPrice(resultSet.getInt("price"));
                 return item;
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

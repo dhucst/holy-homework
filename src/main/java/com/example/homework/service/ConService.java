@@ -26,9 +26,8 @@ public class ConService {
             Contract date = new Contract();
             date.setContract_date(new Date());
 
-            jdbcTemplate.update(sql,contract.getProvider_id(),contract.getItem_id(),contract.getContract_num(),contract.getPrice(),contract.getContract_date(),contract.getProcesser(),contract.getAct_num());
+            jdbcTemplate.update(sql, contract.getProvider_id(), contract.getItem_id(), contract.getContract_num(), contract.getPrice(), contract.getContract_date(), contract.getProcesser(), contract.getAct_num());
         } catch (Exception e) {
-            System.out.println(e);
             System.out.println(contract.getContract_id());
             return false;
         }
@@ -36,34 +35,30 @@ public class ConService {
     }
 
     //根据contract_id查看合同信息
-    public List<Contract> findContractById(int id){
+    public List<Contract> findContractById(int id) {
         String sql = "SELECT * FROM contract WHERE contract_id=" + id;
         try {
-            return jdbcTemplate.query(sql, new RowMapper<Contract>() {
-                @Override
-                public Contract mapRow(ResultSet resultSet, int i) throws SQLException {
-                    Contract contract = new Contract();
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Contract contract = new Contract();
 
-                    contract.setContract_id(resultSet.getInt("contract_id"));
-                    contract.setProvider_id(resultSet.getInt("provider_id"));
-                    contract.setItem_id(resultSet.getInt("item_id"));
-                    contract.setContract_num(resultSet.getInt("contract_num"));
-                    contract.setPrice(resultSet.getInt("price"));
-                    contract.setContract_date(resultSet.getDate("contract_date"));
-                    contract.setProcesser(resultSet.getInt("processer"));
-                    contract.setAct_num(resultSet.getInt("act_num"));
+                contract.setContract_id(resultSet.getInt("contract_id"));
+                contract.setProvider_id(resultSet.getInt("provider_id"));
+                contract.setItem_id(resultSet.getInt("item_id"));
+                contract.setContract_num(resultSet.getInt("contract_num"));
+                contract.setPrice(resultSet.getInt("price"));
+                contract.setContract_date(resultSet.getDate("contract_date"));
+                contract.setProcesser(resultSet.getInt("processer"));
+                contract.setAct_num(resultSet.getInt("act_num"));
 
-                    return contract;
-                }
+                return contract;
             });
-        }catch (Exception e){
-            System.out.println(e);
+        } catch (Exception e) {
             return null;
         }
     }
 
     //查看未完成的合同信息
-    public List<Todo_contract> getContractTodo(){
+    public List<Todo_contract> getContractTodo() {
         String sql = "SELECT * FROM todo_contract";
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
@@ -78,8 +73,7 @@ public class ConService {
                 todoContract.setAct_num(resultSet.getInt("act_num"));
                 return todoContract;
             });
-        }catch (Exception e){
-            System.out.println(e);
+        } catch (Exception e) {
             return null;
         }
     }
