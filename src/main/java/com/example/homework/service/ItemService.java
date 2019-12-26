@@ -68,4 +68,17 @@ public class ItemService {
         }
     }
 
+    public int getItemNum() {
+        String sql = "SELECT COUNT(*) AS num FROM item";
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+
 }
+
+
+

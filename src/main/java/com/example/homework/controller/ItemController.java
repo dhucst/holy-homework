@@ -57,4 +57,13 @@ public class ItemController {
         return res;
     }
 
+    @RequestMapping(value = "/num", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_num() {
+        ResEntity res = new ResEntity(200, "success");
+        int result = itemService.getItemNum();
+        res.setData(result);
+        return res;
+    }
+
 }
