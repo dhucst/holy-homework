@@ -3,21 +3,21 @@ package com.example.homework.entity;
 import java.util.Date;
 
 //创建实体对象
-public class Constract {
-    private int constract_id;
+public class Contract {
+    private int contract_id;
     private int provider_id;
     private int item_id;
-    private int constract_num;
+    private int contract_num;
     private int price;
-    private Date constract_date;
+    private Date contract_date;
     private int act_num;
 
-    public int getConstract_id() {
-        return constract_id;
+    public int getcontract_id() {
+        return contract_id;
     }
 
-    public void setConstract_id(int constract_id) {
-        this.constract_id = constract_id;
+    public void setcontract_id(int contract_id) {
+        this.contract_id = contract_id;
     }
 
     public int getProvider_id() {
@@ -36,12 +36,12 @@ public class Constract {
         this.item_id = item_id;
     }
 
-    public int getConstract_num() {
-        return constract_num;
+    public int getcontract_num() {
+        return contract_num;
     }
 
-    public void setConstract_num(int constract_num) {
-        this.constract_num = constract_num;
+    public void setcontract_num(int contract_num) {
+        this.contract_num = contract_num;
     }
 
     public int getPrice() {
@@ -52,12 +52,12 @@ public class Constract {
         this.price = price;
     }
 
-    public Date getConstract_date() {
-        return constract_date;
+    public Date getcontract_date() {
+        return contract_date;
     }
 
-    public void setConstract_date(Date constract_date) {
-        this.constract_date = constract_date;
+    public void setcontract_date(Date contract_date) {
+        this.contract_date = contract_date;
     }
 
     public int getAct_num() {

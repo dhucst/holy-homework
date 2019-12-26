@@ -1,15 +1,20 @@
 package com.example.homework.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.util.Date;
 
 //创建实体对象
 public class Item_Log {
+
     private int log_id;
     private Date in_date;
     private int repo_id;
+
     private int item_id;
     private int num;
-    private int constract_id;
+    private int contract_id;
+    private int processer;
 
     public int getLog_id() {
         return log_id;
@@ -51,11 +56,19 @@ public class Item_Log {
         this.num = num;
     }
 
-    public int getConstract_id() {
-        return constract_id;
+    public int getContract_id() {
+        return contract_id;
     }
 
-    public void setConstract_id(int constract_id) {
-        this.constract_id = constract_id;
+    public void setContract_id(int contract_id) {
+        this.contract_id = contract_id;
+    }
+
+    public int getProcesser(){
+        return processer;
+    }
+
+    public void  setProcesser(int processer){
+        this.processer = processer;
     }
 }
