@@ -48,4 +48,36 @@ public class StorageService {
             return null;
         }
     }
+
+    public List<Item_Log> getAllStorage(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM item_log LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
+        try {
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Item_Log item_log = new Item_Log();
+                item_log.setLog_id(resultSet.getInt("log_id"));
+                item_log.setIn_date(resultSet.getDate("in_date"));
+                item_log.setRepo_id(resultSet.getInt("repo_id"));
+                item_log.setItem_id(resultSet.getInt("item_id"));
+                item_log.setNum(resultSet.getInt("num"));
+                item_log.setContract_id(resultSet.getInt("contract_id"));
+                item_log.setProcesser(resultSet.getInt("processer"));
+                return item_log;
+            });
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public int inquire() {
+        String sql = "SELECT count(*) FROM item_log";
+        try {
+            return jdbcTemplate.queryForObject(sql,Integer.class);
+        } catch (Exception e) {
+            System.out.println(e);
+            return 0;
+        }
+    }
+
+
 }

@@ -1,10 +1,6 @@
 package com.example.homework.controller;
 
-import com.example.homework.entity.Employee;
-import com.example.homework.entity.Item_Log;
-import com.example.homework.entity.Repo;
-import com.example.homework.entity.ResEntity;
-import com.example.homework.service.RepoService;
+import com.example.homework.entity.*;
 import com.example.homework.service.StorageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +35,26 @@ public class StorageInputController {
         return res;
     }
 
+    //查看入库列表
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_all_Storage(@RequestParam int pageIndex, @RequestParam int pageSize) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Item_Log> result = storageService.getAllStorage(pageIndex, pageSize);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
+        res.setData(result);
+        return res;
+    }
 
+    //查看入库记录总数
+    @RequestMapping(value = "/num", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity Get_log_num() {
+        ResEntity res = new ResEntity(200,"success");
+        int result = storageService.inquire();
+        res.setData(result);
+        return res;
+
+    }
 }

@@ -3,12 +3,9 @@ package com.example.homework.service;
 import com.example.homework.entity.Item_view;
 import com.example.homework.entity.Repo;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Service
