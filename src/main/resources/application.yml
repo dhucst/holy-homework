@@ -8,6 +8,10 @@ spring:
     type: javax.sql.DataSource
   resources:
     static-locations: classpath:/templates/
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
 jpa:
   show-sql: true
 hibernate:
