@@ -2,7 +2,7 @@ spring:
   datasource:
     name: jdbc/mysql
     driver-class-name: com.mysql.jdbc.Driver
-    username: root   #数据库账号
+    username: user1   #数据库账号
     password: 123456  #数据库密码
     url: jdbc:mysql://localhost:3306/homework?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC #demo为数据库名称
     type: javax.sql.DataSource
