@@ -29,7 +29,7 @@ public class UserService {
 
     public List<Employee> valid(Employee employee) {
 
-        String sql = String.format("SELECT * FROM employee WHERE emp_name='%s' AND pwd='%s'", employee.getEmp_name(),employee.getPwd());
+        String sql = String.format("SELECT * FROM employee WHERE emp_name='%s' AND pwd='%s'", employee.getEmp_name(), employee.getPwd());
         try {
             return jdbcTemplate.query(sql, (resultSet, i) -> {
                 Employee employee1 = new Employee();
@@ -43,5 +43,21 @@ public class UserService {
             return null;
         }
     }
+
+    public List<Employee> getAllEmployees(int pageIndex, int pageSize) {
+        String sql = String.format("SELECT * FROM employee LIMIT %d OFFSET %d", pageSize, pageSize * (pageIndex - 1));
+        try {
+            return jdbcTemplate.query(sql, (resultSet, i) -> {
+                Employee employee = new Employee();
+                employee.setEmp_name(resultSet.getString("emp_name"));
+                employee.setRole(resultSet.getInt("role"));
+                employee.setEmp_id(resultSet.getInt("emp_id"));
+                return employee;
+            });
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
 }

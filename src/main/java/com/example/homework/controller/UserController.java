@@ -4,10 +4,7 @@ import com.example.homework.entity.Employee;
 import com.example.homework.entity.ResEntity;
 import com.example.homework.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -40,4 +37,15 @@ public class UserController {
         return new ResEntity(200, "success");
     }
 
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    ResEntity get_all_item(@RequestParam int pageIndex, @RequestParam int pageSize) {
+        ResEntity res = new ResEntity(200, "success");
+        List<Employee> result = userService.getAllEmployees(pageIndex, pageSize);
+        if (result.size() <= 0)
+            return new ResEntity(404, "Not found");
+        res.setData(result);
+        return res;
+    }
+    
 }
